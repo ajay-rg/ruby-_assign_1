@@ -32,7 +32,7 @@ def alpha_num(e)
 	end
 	return s
 end
-a= initialize_board(10, 0)
+a= initialize_board(11, 0)
 		a[0][1]="A"
 		a[0][2]="B"
 		a[0][3]="C"
@@ -42,6 +42,7 @@ a= initialize_board(10, 0)
 		a[0][7]="G"
 		a[0][8]="H"
 		a[0][9]="I"
+		a[0][10]="J"	
 		a[1][0]=1
 		a[2][0]=2
 		a[3][0]=3
@@ -51,6 +52,7 @@ a= initialize_board(10, 0)
 		a[7][0]=7
 		a[8][0]=8
 		a[9][0]=9
+		a[10][0]=10
 		a[0][0]="-"
 loop do
 	print "Set value or set expression or end:1 or 2 or 3?\n"
@@ -80,9 +82,9 @@ when 2
 	z1=gets.chomp.upcase
 	z = z1.gsub(/[^0-9^A-Z]/,"")
 	z =z.split("")
-	o=z.class.name
-	puts o
-	puts z
+	# o=z.class.name
+	# puts o
+	# puts z
 	w1=alpha_num(z[2])
 	w1=w1.to_i
 	w2=z[3]
