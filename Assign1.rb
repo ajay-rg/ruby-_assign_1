@@ -5,7 +5,6 @@ class RGA
 		if m == 0
 			raise("Give me something!")
 		else b = a.gsub(/[^0-9,^-]/,"")
-			#b = b.split(/d+/)#.map{|s| s.to_i}
 			b = a.scan /[-+]?[0-9]*\,?[0-9]+/		
 			return b
 		end	
