@@ -1,4 +1,4 @@
-def initialize_grid(n, val)
+def initialize_grid(n, val)				#function to initialize an 2-d array
   grid = Array.new(n)
   n.times do |row_index|
     grid[row_index] = Array.new(n)
@@ -8,7 +8,7 @@ def initialize_grid(n, val)
   end
   grid
 end
-def alpha_to_num(string)
+def alpha_to_num(string)			#To convert an alphabet to corresponding number so that it can be used as an index value
 	if(string =='A')
 		temp=1
 	elsif(string =='B')
@@ -32,8 +32,8 @@ def alpha_to_num(string)
 	end
 	return temp
 end
-array= initialize_grid(11, 0)
-		array[0][1]="A"
+array= initialize_grid(11, 0)			#initialize the required excel sheet
+		array[0][1]="A"			#naming the rows and columns
 		array[0][2]="B"
 		array[0][3]="C"
 		array[0][4]="D"
@@ -54,33 +54,33 @@ array= initialize_grid(11, 0)
 		array[9][0]=9
 		array[10][0]=10
 		array[0][0]="-"
-loop do
+loop do						
 	print "Set value or set expression or end:1 or 2 or 3?\n"
-	option=gets.chomp.to_i
+	option=gets.chomp.to_i			#take an option about operation
 case option
-when 1
+when 1						#assign the desired value to the cell
 		print "Source cell: eg:A5\n"
-		cell= gets.chomp.upcase.split('')
+		cell= gets.chomp.upcase.split('')	#split the given string to array
 		temp1 = cell[0]
 		temp2 = cell[1]
-		flag1= alpha_to_num(temp1).to_i
+		flag1= alpha_to_num(temp1).to_i		#CONVERT THE COLUMN NAME TO CORRESPONDING NUMBER
 		flag2=temp2.to_i
 		print "Value:\n"
 		value=gets.chomp.to_i
-		array[flag2][flag1]=value
+		array[flag2][flag1]=value		#give the value to the cell
 	for i in 0..10
 		for j in 0..10
 			print "#{array[i][j]}\t"
 		end
 		print "\n"
 	end
-when 2
+when 2							#do the required operation
 	print "Set Expression: eg:A5=B3+C1\n"
 	expression_cpy=gets.chomp.upcase
-	expression=expression_cpy.gsub(/[^0-9^A-Z]/,"").split("")
-	val1 = array[expression[3].to_i][alpha_to_num(expression[2]).to_i].to_i
-	val2 = array[expression[5].to_i][alpha_to_num(expression[4]).to_i].to_i
-	if expression_cpy.include?"+"
+	expression=expression_cpy.gsub(/[^0-9^A-Z]/,"").split("")		#convert the given string to an array such that it recognises the destinanation and source cells
+	val1 = array[expression[3].to_i][alpha_to_num(expression[2]).to_i].to_i	 #value in source cell 1
+	val2 = array[expression[5].to_i][alpha_to_num(expression[4]).to_i].to_i	 #value in source cell 2
+	if expression_cpy.include?"+"						#operation is performed according to the operator given
 		Operation_result=val1+val2
 	end
 	if expression_cpy.include?"-"
@@ -92,14 +92,14 @@ when 2
 	if expression_cpy.include?"/"
 		Operation_result=val1/val2
 	end
-	array[expression[1].to_i][alpha_to_num(expression[0]).to_i]=Operation_result
+	array[expression[1].to_i][alpha_to_num(expression[0]).to_i]=Operation_result	#assign the obtained result to the destination cell
 	for i in 0..10
 		for j in 0..10
 		print "#{array[i][j]}\t"
 		end
 	print "\n"
 	end
-when 3
+when 3									#end the program if option 3 is given
 	break
 end
 end
